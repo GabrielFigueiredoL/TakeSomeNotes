@@ -1,0 +1,23 @@
+.conteiner-note-aside {
+    box-sizing: border-box;
+    display: flex;
+    
+    height: 30px;
+    width: 100%;
+
+    background: #1F1F1F;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.note-aside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 10px;
+    gap: 5px;
+
+    width: 100%;
+}
