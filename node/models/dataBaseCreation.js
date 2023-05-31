@@ -6,6 +6,12 @@ const dataBase = db.sequelize.define('Notas', {
     },
     conteudo: {
         type: db.Sequelize.TEXT,
+    },
+    cor: {
+        type: db.Sequelize.STRING
+    },
+    fonte: {
+        type: db.Sequelize.STRING
     }
 })
 
