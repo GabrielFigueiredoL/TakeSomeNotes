@@ -32,9 +32,9 @@ const Header = () => {
             <header>
                 <h1>Take Some Notes</h1>
                 <div className="notes">
-                <Link to={`/criar-nota/`}className='conteiner-note-aside'><div className='note-aside'><PlusCircle size={16} /><p>Criar nova nota</p></div></Link>
+                <Link to={`/criar-nota/`}className='conteiner-note-aside'><div style={{fontFamily: 'Abel'}} className='note-aside'><PlusCircle size={16} /><p>Criar nova nota</p></div></Link>
                     {notas.map((nota) => (
-                        <LinkNota id={nota.id} titulo={nota.titulo} key={nota.id} />
+                        <LinkNota id={nota.id} titulo={nota.titulo} cor={nota.cor} fonte={nota.fonte} key={nota.id} />
                     ))}
                 </div>
             </header>

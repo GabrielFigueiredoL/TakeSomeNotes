@@ -6,8 +6,9 @@ import { useState } from "react"
 const baseURL = 'http://localhost:3000/criar-nota'
 
 const CriarNota = () => {
+    
     const handleChange = e => {
-        const { name, value } = e.target
+        const { name, value } = e.target        
         setNota(dadosNota => {
             const notaTmp = { ...dadosNota, [name]: value }
             return notaTmp
@@ -17,18 +18,20 @@ const CriarNota = () => {
     const [nota, setNota] = useState({
         id: '',
         titulo: '',
-        conteudo: ''
+        conteudo: '',
+        cor: '#2F2F2F',
+        fonte: 'Abel'
     })
     
     const navigate = useNavigate()
 
     const adicionarNota = async () => {
-        console.log('clicado')
         await fetch(baseURL, {
             method: "POST",
             body: JSON.stringify({
                 titulo: nota.titulo,
-                conteudo: nota.conteudo
+                conteudo: nota.conteudo,
+                cor: nota.cor
             }), headers: {
                 "Content-type": "application/json; charset=UTF-8",
             }
@@ -43,8 +46,7 @@ const CriarNota = () => {
     return (
         <section>
             <Header />
-            <div className="content">
-            <div className="full-note">
+            <div className="full-note" style={{backgroundColor: nota.cor}}>
                 <input
                     type="text"
                     className='title'
@@ -52,6 +54,7 @@ const CriarNota = () => {
                     name='titulo'
                     onChange={handleChange}
                     value={nota.titulo}
+                    style={{fontFamily: nota.fonte}}
 
                 />
                 <textarea
@@ -61,13 +64,27 @@ const CriarNota = () => {
                     name='conteudo'
                     onChange={handleChange}
                     value={nota.conteudo}
+                    style={{fontFamily: nota.fonte}}
 
                 ></textarea>
             </div>
                 <div className="buttons">
-                    <button id="adicionarNota" onClick={adicionarNota}><PlusCircle />Adicionar Nota</button>
+                    <button id="adicionarNota" onClick={adicionarNota}><PlusCircle size={40}/></button>
+                    <input
+                        name="cor"
+                        type="color" 
+                        className="color" 
+                        value={nota.cor}
+                        onChange={handleChange}
+                    />
+                    <select name="fonte" value={nota.fonte} onChange={handleChange}>
+                        <option style={{fontFamily: 'Abel'}} value="Abel">Abel</option>
+                        <option style={{fontFamily: 'Arial'}} value="Arial">Arial</option>
+                        <option style={{fontFamily: 'Helvetica'}} value="Helvetica">Helvetica</option>
+                        <option style={{fontFamily: 'Times New Roman'}} value="Times New Roman">Times New Roman</option>
+                        <option style={{fontFamily: 'Verdana'}} value="Verdana">Verdana</option>
+                    </select>
                 </div>
-            </div>
             
         </section>
     )
