@@ -4,6 +4,8 @@ const createNote = async (req, res) => {
     await dataBase.create({
         titulo: req.body.titulo,
         conteudo: req.body.conteudo,
+        cor: req.body.cor,
+        fonte: req.body.fonte
     }).then(function(){
         res.send('Nota adicionada com sucesso!')
     }).catch(function(erro){
@@ -38,6 +40,8 @@ const updateNote = async (req, res) => {
     await dataBase.update({
         titulo: note.titulo, 
         conteudo: note.conteudo,
+        cor: req.body.cor,
+        fonte: req.body.fonte
     }, {
         where: {
             id: id
